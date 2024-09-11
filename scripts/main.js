@@ -7,6 +7,7 @@ let controlls = {
   move_right: false,
   zoom_in: false,
   zoom_out: false,
+  debug: false,
 }
 
 function setup(){
@@ -40,6 +41,9 @@ function keyPressed(){
   }
   if(key == 'x'){
     controlls.zoom_out = true;
+  }
+  if(key == '`'){
+    controlls.debug = !controlls.debug;
   }
   
 }

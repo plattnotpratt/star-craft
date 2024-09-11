@@ -64,10 +64,6 @@ class Camera{
   }
 
   render(){
-    stroke(0,255,0);
-    noFill();
-    strokeWeight(10)
-    rect(this.pos.x, this.pos.y, this.dim.width, this.dim.height);
 
     push();
     scale(this.zoom / 100);

@@ -7,9 +7,6 @@ class Game{
     this.camera = new Camera();
     this.camera.addRenderable(this.world);
     this.camera.addRenderable(this.character, true);
-    for(var i = 0; i < 100; i ++){
-      this.world.addElement(new Star((Math.floor(Math.random()*1000)),(Math.floor(Math.random()*1000))))
-    }
   }
 
   update(){

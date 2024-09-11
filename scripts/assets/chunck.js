@@ -1,10 +1,10 @@
 class Chunck{
-  constructor(){
-    this.offset = createVector(0,0)
+  constructor(chunckX, chunckY){
     this.dimentions = 1000;
-    this.pos = createVector(this.offset.x, this.offset.y);
+    this.starCount = Math.floor(Math.random() * 50)
+    this.pos = createVector(chunckX* this.dimentions,chunckY * this.dimentions)
     this.elements = [];
-    for(var i = 0; i < 100; i ++){
+    for(var i = 0; i < this.starCount; i ++){
       this.addElement(new Star((Math.floor(Math.random()*this.dimentions)+this.pos.x),(Math.floor(Math.random()*this.dimentions)+this.pos.y)))
     }
   }
@@ -13,10 +13,24 @@ class Chunck{
   }
 
   update(){
-
+    for(let i = 0; i < this.elements.length; i++){
+      //this.elements[i].update();
+    }
   }
 
   render(){
+    this.debugRender();
+    for(let i = 0; i < this.elements.length; i++){
+      this.elements[i].render();
+    }
+  }
 
+  debugRender(){
+    if(controlls.debug){
+      stroke(0,255,0);
+      noFill();
+      strokeWeight(1)
+      rect(this.pos.x, this.pos.y, this.dimentions, this.dimentions);
+    }
   }
 }
