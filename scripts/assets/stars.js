@@ -8,7 +8,7 @@ class Star{
   }
   render(){
     stroke(255);
-    strokeWeight(2)
+    strokeWeight(4)
     point(this.pos.x, this.pos.y);
   }
 }

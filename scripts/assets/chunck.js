@@ -1,11 +1,11 @@
 class Chunck{
   constructor(chunckX, chunckY){
     this.dimentions = 1000;
-    this.starCount = Math.floor(Math.random() * 50)
+    this.starCount = Math.floor(Math.random() * 500)
     this.pos = createVector(chunckX* this.dimentions,chunckY * this.dimentions)
     this.elements = [];
     for(var i = 0; i < this.starCount; i ++){
-      this.addElement(new Star((Math.floor(Math.random()*this.dimentions)+this.pos.x),(Math.floor(Math.random()*this.dimentions)+this.pos.y)))
+      this.addElement(new Star((Math.floor(Math.random()*this.dimentions)+this.pos.x- this.dimentions /2),(Math.floor(Math.random()*this.dimentions)+this.pos.y - this.dimentions/2)))
     }
   }
   addElement(element){

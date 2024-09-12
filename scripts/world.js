@@ -8,7 +8,7 @@ class World{
   buildWorld(){
     for(let i = -10; i < 10; i ++){
       for(let k = -10; k < 10; k++){
-        this.chuncks.push(new Chunck(i,k));
+        this.elements.push(new Chunck(i,k));
       }
     }
   }
@@ -26,7 +26,7 @@ class World{
   }
 
   render(){
-    this.debugRender
+    this.debugRender()
     for(let i = 0; i < this.elements.length; i++){
       this.elements[i].render();
     }

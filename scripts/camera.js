@@ -1,5 +1,5 @@
 class Camera{
-  constructor(){
+  constructor(world){
     this.pos = createVector()
     this.zoom = 100;
     this.maxZoom = 200;
@@ -9,7 +9,13 @@ class Camera{
       width: windowWidth / 1 * this.zoom,
       height: windowHeight / 1 * this.zoom,
     }
+    this.world = world;
     this.elements = [];
+    this.focus = null;
+    this.renderDistance = {
+      width: this.dim.width + 500,
+      height: this.dim.height + 500,
+    }
   }
 
   addRenderable(renderable, focus = false){
@@ -53,6 +59,19 @@ class Camera{
     //interpelate to target zoom
   }
 
+  
+
+  /**
+   * checkRenderDistance(element)-> bool
+   * take an element and check to see if the element
+   * is within a render distance from the focused element
+   */
+  checkRenderDistance(element){
+    if(element.pos.x < (this.pos.x + this.renderDistance.width / 2) && element.pos.x >= (this.pos.x - this.renderDistance.width / 2)){
+      return true;
+    }
+  }
+
   update(){
     if(controlls.zoom_in){
       this.updateZoom(this.zoom + 1);
@@ -66,13 +85,26 @@ class Camera{
   render(){
 
     push();
-    scale(this.zoom / 100);
-    translate(-this.pos.x, -this.pos.y)
+      scale(this.zoom / 100);
+      translate(-this.pos.x, -this.pos.y)
+      for(let i = 0; i < this.world.elements.length; i++){
+        if(this.checkRenderDistance(this.world.elements[i])){
+          this.world.elements[i].render();
+        }
+      }
     
-    for(let i = 0; i < this.elements.length; i++){
-      this.elements[i].render();
-    }
+      this.debugRender();
     pop();
+  }
+
+  debugRender(){
+    if(controlls.debug){
+      noFill();
+      strokeWeight(1);
+      stroke(255,0,0);
+      //render distance
+      rect(this.pos.x, this.pos.y, this.renderDistance.width, this.renderDistance.height);
+    }
   }
 
 
