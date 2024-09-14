@@ -8,11 +8,21 @@ let controlls = {
   zoom_in: false,
   zoom_out: false,
   debug: false,
+  builder: false,
 }
+const state = {
+  menu: "MENU",
+  play: "PLAY",
+  shipBuilder: "SHIP_BUILDER",
+}
+
+var currentState = state.play;
+
+
 
 function setup(){
   
-  g = new Game(controlls);
+  g = new Game();
   createCanvas(windowWidth ,windowHeight);
 }
 
@@ -45,7 +55,12 @@ function keyPressed(){
   if(key == '`'){
     controlls.debug = !controlls.debug;
   }
-  
+  if(key == 'b'){
+    currentState = state.shipBuilder;
+  }
+  if(key == 'g'){
+    currentState = state.play;
+  }
 }
 
 function keyReleased(){

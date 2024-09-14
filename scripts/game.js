@@ -1,11 +1,12 @@
 class Game{
 
-  constructor(movements){
+  constructor(){
     this.world = new World();
-    this.character = new Character(movements);
-    this.world.addElement(this.character);
+    this.ship = new Ship();
+    this.shipBuilder = new ShipBuilder(this.ship);
+    this.world.addElement(this.ship);
     this.camera = new Camera(this.world);
-    this.camera.addRenderable(this.character, true);
+    this.camera.addRenderable(this.ship, true);
   }
 
   update(){
@@ -16,7 +17,16 @@ class Game{
   render(){
     push()
     translate(windowWidth/2, windowHeight/2)
-    this.camera.render();
+    switch(currentState){
+      case state.play:
+        this.camera.render();
+        break;
+      case state.shipBuilder:
+        this.camera.render();
+        this.shipBuilder.render();
+      // case state.menu:
+      //   this.menu.render();
+    }
     pop()
   }
 }

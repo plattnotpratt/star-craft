@@ -1,7 +1,7 @@
 class Chunck{
   constructor(chunckX, chunckY){
     this.dimentions = 1000;
-    this.starCount = Math.floor(Math.random() * 500)
+    this.starCount = Math.floor(Math.random() * 100)
     this.pos = createVector(chunckX* this.dimentions,chunckY * this.dimentions)
     this.elements = [];
     for(var i = 0; i < this.starCount; i ++){

@@ -26,13 +26,13 @@ class World{
   }
 
   render(){
+    // for(let i = 0; i < this.elements.length; i++){
+    //   this.elements[i].render();
+    // }
+    // for(let i = 0; i < this.chuncks.length; i++){
+    //   this.chuncks[i].render();
+    // }
     this.debugRender()
-    for(let i = 0; i < this.elements.length; i++){
-      this.elements[i].render();
-    }
-    for(let i = 0; i < this.chuncks.length; i++){
-      this.chuncks[i].render();
-    }
   }
 
   debugRender(){

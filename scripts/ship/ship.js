@@ -1,11 +1,11 @@
-class Character{
+class Ship{
   constructor(){
     this.pos = createVector(0,0);
     this.acc = createVector(0,0);
     this.vel = createVector(0,0);
     this.moveSpeed = 10;
     this.acceleration = 0.5;
-    this.friction
+    this.shipBlueprint = new ShipElement('Core', this.pos)
 
   }
 
@@ -29,13 +29,13 @@ class Character{
     this.vel.add(this.acc);
     this.acc.mult(0)
     this.pos.add(this.vel);
-    this.pos.mult(0.98)
+    this.pos.mult(0.99)
   }
 
   render(){
     fill(255);
     noStroke();
-    rect(this.pos.x, this.pos.y, 10, 10);
+    this.shipBlueprint.render();
 
   }
 }
